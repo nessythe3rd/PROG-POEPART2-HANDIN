@@ -29,7 +29,7 @@ namespace tester_final.Controllers
             return View(viewModel);
         }
         //Post from Add Form
-        
+        [HttpPost]
         public async Task<IActionResult> Add(AddStudentViewModel viewModel, IFormFile supportingDocs)
         {
             if (!ModelState.IsValid)
