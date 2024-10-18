@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Select Role";
+}
+<center>
+<h2>Welcome! Please log in as:</h2>
+
+<div>
+    <form asp-action="Add" method="post">
+        <button type="submit" name="role" value="Lecturer" class="btn btn-primary">Lecturer</button>
+        <button type="submit" name="role" value="Manager" class="btn btn-primary">Manager</button>
+    </form>
+</div>
+</center>

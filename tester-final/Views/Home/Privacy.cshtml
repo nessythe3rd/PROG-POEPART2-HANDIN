@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Upload Documents";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Supporting Documents</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Supporting Documents</h1>
+        <form method="post" enctype="multipart/form-data" action="/Students/Add">
+            <div class="form-group">
+                <label for="lecturerName">Lecturer Name:</label>
+                <input type="text" id="lecturerName" name="lecturerName" required>
+            </div>
+
+            <!-- Other input fields -->
+
+            <div class="form-group">
+                <label for="supportingDocs">Upload Supporting Document:</label>
+                <input type="file" id="supportingDocs" name="supportingDocs" accept=".pdf,.doc,.jpg,.jpeg,.png" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
+
+        @if (ViewData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @ViewData["SuccessMessage"]
+            </div>
+        }
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<tester_final.Models.Employee>
+
+@{
+    ViewBag.Title = "Submit Claim";
+}
+
+<h2>Employee Claims</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any()) // Check if the Model is not null and contains items
+        {
+            foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.HoursWorked</td>
+                    <td>@employee.HourlyRate.ToString("C")</td>
+                    <td>@employee.TotalAmount.ToString("C")</td>
+                    <td>
+                        @using (Html.BeginForm("Accept", "Employees", FormMethod.Post))
+                        {
+                            @Html.Hidden("name", employee.Name)
+                            <input type="submit" value="Accept" class="btn btn-success" />
+                        }
+                        @using (Html.BeginForm("Reject", "Employees", FormMethod.Post))
+                        {
+                            @Html.Hidden("name", employee.Name)
+                            <input type="submit" value="Reject" class="btn btn-danger" />
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No employees found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

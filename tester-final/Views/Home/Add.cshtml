@@ -1,0 +1,57 @@
+﻿@model tester_final.Models.AddStudentViewModel
+
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Claim</title>
+    <script>
+        function calculateTotal() {
+            // Get the values from the input fields
+            var hoursWorked = parseFloat(document.getElementById("hoursWorked").value) || 0;
+            var hourlyRate = parseFloat(document.getElementById("hourlyRate").value) || 0;
+
+            // Calculate the total amount
+            var totalAmount = hoursWorked * hourlyRate;
+
+            // Set the total amount in the corresponding input field
+            document.getElementById("totalAmount").value = totalAmount.toFixed(2); // Format to 2 decimal places
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Student</h1>
+        <form method="post" action="@Url.Action("Add", "Students")">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hoursWorked">Hours Worked:</label>
+                <input type="number" id="hoursWorked" name="HoursWorked" step="0.01" required oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group">
+                <label for="hourlyRate">Hourly Rate:</label>
+                <input type="number" id="hourlyRate" name="HourlyRate" step="0.01" required oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group">
+                <label>Total Amount:</label>
+                <input type="text" id="totalAmount" name="TotalAmount" value="@Model?.TotalAmount" readonly>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Add Student</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
