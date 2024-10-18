@@ -18,7 +18,7 @@ namespace tester_final.Controllers
             this.dbContext = dbContext;
         }
 
-        // GET: Students/Add
+       
         [HttpGet]
         public IActionResult Add()
         {
@@ -29,7 +29,6 @@ namespace tester_final.Controllers
             return View(viewModel);
         }
 
-        // POST: Students/Add
         [HttpPost]
         public async Task<IActionResult> Add(AddStudentViewModel viewModel, IFormFile supportingDocs)
         {
@@ -40,7 +39,7 @@ namespace tester_final.Controllers
 
             viewModel.TotalAmount = viewModel.HoursWorked * viewModel.HourlyRate;
 
-            // Process the uploaded file if provided
+           
             if (supportingDocs != null && supportingDocs.Length > 0)
             {
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", supportingDocs.FileName);
@@ -51,7 +50,7 @@ namespace tester_final.Controllers
                 }
             }
 
-            // Create a new student entity and save it
+            
             var student = new Student
             {
                 Name = viewModel.Name,
@@ -63,10 +62,10 @@ namespace tester_final.Controllers
             await dbContext.Students.AddAsync(student);
             await dbContext.SaveChangesAsync();
 
-            // Set a success message
+           
             ViewData["SuccessMessage"] = "Document uploaded and student added successfully.";
 
-            // Redirect back to the Add page to refresh it
+           
             return RedirectToAction("Add");
         }
     }

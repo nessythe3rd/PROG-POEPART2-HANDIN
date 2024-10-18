@@ -14,7 +14,7 @@ namespace tester_final.Controllers
 
         public ActionResult SubmitClaim()
         {
-            // Ensure employees is not null
+           
             if (employees == null)
             {
                 return HttpNotFound("No employees found.");
