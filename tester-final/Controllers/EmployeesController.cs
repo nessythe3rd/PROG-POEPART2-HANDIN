@@ -35,7 +35,7 @@ namespace tester_final.Controllers
             return RedirectToAction("SubmitClaim"); 
         }
 
-        [HttpPost]
+        
         public ActionResult Reject(string name)
         {
             
