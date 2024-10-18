@@ -46,7 +46,7 @@ namespace tester_final.Controllers
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await supportingDocs.CopyToAsync(stream);
+                    await supportingDocs.CopyToAsync(stream)
                 }
             }
 
