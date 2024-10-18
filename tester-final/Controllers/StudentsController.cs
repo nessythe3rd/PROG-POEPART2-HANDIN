@@ -18,7 +18,7 @@ namespace tester_final.Controllers
             this.dbContext = dbContext;
         }
 
-       
+       //getting Data from table
         [HttpGet]
         public IActionResult Add()
         {
@@ -28,8 +28,8 @@ namespace tester_final.Controllers
             };
             return View(viewModel);
         }
-
-        [HttpPost]
+        //Post from Add Form
+        
         public async Task<IActionResult> Add(AddStudentViewModel viewModel, IFormFile supportingDocs)
         {
             if (!ModelState.IsValid)
