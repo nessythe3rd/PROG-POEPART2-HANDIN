@@ -12,15 +12,15 @@
     <title>Submit Claim</title>
     <script>
         function calculateTotal() {
-            // Get the values from the input fields
+           
             var hoursWorked = parseFloat(document.getElementById("hoursWorked").value) || 0;
             var hourlyRate = parseFloat(document.getElementById("hourlyRate").value) || 0;
 
-            // Calculate the total amount
+           
             var totalAmount = hoursWorked * hourlyRate;
 
-            // Set the total amount in the corresponding input field
-            document.getElementById("totalAmount").value = totalAmount.toFixed(2); // Format to 2 decimal places
+           
+            document.getElementById("totalAmount").value = totalAmount.toFixed(2); 
         }
     </script>
 </head>

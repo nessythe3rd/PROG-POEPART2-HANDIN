@@ -5,7 +5,7 @@ namespace tester_final.Controllers
 {
     public class EmployeesController : Controller
     {
-        // Temporary data store for demonstration
+       
         private static List<Employee> employees = new List<Employee>
         {
             new Employee { Name = "John Doe", HoursWorked = 40, HourlyRate = 15 },
@@ -19,7 +19,7 @@ namespace tester_final.Controllers
             {
                 return HttpNotFound("No employees found.");
             }
-            return View(employees); // Pass the employees list to the SubmitClaim view
+            return View(employees); 
         }
 
         private ActionResult HttpNotFound(string v)
@@ -30,17 +30,17 @@ namespace tester_final.Controllers
         [HttpPost]
         public ActionResult Accept(string name)
         {
-            // Handle acceptance logic here (e.g., mark the employee as accepted)
+          
             TempData["Message"] = $"{name} has been accepted.";
-            return RedirectToAction("SubmitClaim"); // Redirect to SubmitClaim
+            return RedirectToAction("SubmitClaim"); 
         }
 
         [HttpPost]
         public ActionResult Reject(string name)
         {
-            // Handle rejection logic here (e.g., mark the employee as rejected)
+            
             TempData["Message"] = $"{name} has been rejected.";
-            return RedirectToAction("SubmitClaim"); // Redirect to SubmitClaim
+            return RedirectToAction("SubmitClaim");
         }
     }
 }
